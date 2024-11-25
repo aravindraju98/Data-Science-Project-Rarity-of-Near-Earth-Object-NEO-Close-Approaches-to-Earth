@@ -1,85 +1,76 @@
-# Data-Science-Project-Rarity-of-Near-Earth-Object-NEO-Close-Approaches-to-Earth
+# Near-Earth Object (NEO) Close Approaches Analysis
 
-__Team Members:__ Surya Suresh Sriraman, Nivetha Sivakumar, Aravind Raju
+An analysis of factors influencing NEO close approaches to Earth using machine learning classification models.
 
-__Problem:__
+## Overview
 
-Near-Earth Objects (NEOs) pose a potential threat and necessitate close monitoring for planetary defens.
+This study analyzes NASA CNEOS data to predict and classify the rarity of near-Earth object close approaches, focusing on encounters within 10 lunar distances (LD). The project leverages machine learning to identify key factors influencing close approach rarity and develop accurate classification models.
 
-__Methodology:__
+## Research Questions
 
-This study investigates factors influencing asteroid close approach rarity and leverages machine learning to predict rarity and classify encounters. We utilize a NASA CNEOS dataset filtered for close approaches within 10 lunar distances (LD). The dataset includes features like velocity, distance, and absolute magnitude, with "Rarity" as the target variable. We employ various machine learning models, including Logistic Regression, Decision Tree, KNN, SVM and Neural Network, to identify the key factors influencing rarity and develop a classification model to categorize encounters based on predicted rarity. 
+1. What factors most significantly influence NEO close approach rarity?
+2. How effectively can machine learning models predict NEO close approach rarity?
+3. Which classification models perform best for NEO encounter prediction?
 
-__Major Outcomes:__
+## Methodology
 
-The project compares the performance of these models to determine the most effective approach for NEO encounter classification. The research endeavors to provide accurate predictions of NEO encounter rarity, facilitating a deeper understanding of asteroid dynamics. By leveraging machine learning models, insights are gained into the factors influencing the rarity of NEO close approaches. These outcomes are instrumental in guiding planetary defense strategies and optimizing mission planning for space exploration endeavors. Ultimately, the study contributes to the advancement of knowledge in the field of asteroid dynamics and strengthens efforts to mitigate potential hazards posed by NEOs.
+### Data Processing
+- Source: NASA CNEOS dataset
+- Features: Velocity, distance, absolute magnitude
+- Target Variable: Rarity classification
+- Preprocessing: Missing value handling, outlier treatment via winsorization
+- Feature Engineering: Diameter range analysis
 
+### Model Development & Performance
 
-Understanding the characteristics and frequency of asteroid close approaches is crucial for space exploration and potential hazard mitigation. NASA's Center for NEO Studies (CNEOS) tracks NEOs, providing valuable data for scientific research. This project investigates the factors contributing to the rarity of close approaches (Research Question 1) and utilizes machine learning models to predict rarity and classify encounters based on predicted rarity (Research Questions 2 & 3).
+#### Individual Models
+- Decision Tree: Accuracy 0.99, F1-score 0.99
+- KNN: Accuracy 0.97, F1-score 0.97
+- Neural Network (Model 1): Accuracy 0.95, F1-score 0.94
+- Neural Network (Model 2): Accuracy 0.93, F1-score 0.92
+- Logistic Regression: Accuracy 0.89, F1-score 0.88
 
-We leverage a dataset obtained from the __CNEOS website__ containing information on various NEO characteristics, including "Rarity" as the target variable. The data is filtered for close approaches within 10 LD, focusing on potentially hazardous encounters. By employing machine learning models, we aim to:
+#### Ensemble Methods
+- Stacking Classifier: Accuracy 0.97, F1-score 0.97
+- Voting Classifier: Accuracy 0.91, F1-score 0.91
 
-1) Identify the key factors (e.g., size, velocity) that most significantly contribute to the rarity of close approaches.
-2) Develop multiple machine learning models to accurately predict the rarity of Earth close approaches for asteroids using the provided dataset.
-3) Compare the effectiveness of different machine learning models in classifying NEO encounters based on their performance on unseen data.
+Evaluation Metrics: Accuracy, precision, recall, F1-score
 
-This project contributes to a better understanding of NEO encounters and explores the potential of machine learning for classifying and predicting their rarity, aiding in space exploration and potential hazard mitigation strategies.
+## Key Findings
 
-# Introduction
-__Approach__ :
+- Absolute magnitude and diameter significantly influence NEO approach rarity
+- Decision Tree classifier achieved highest performance (F1-score: 0.99)
+- Stacking ensemble outperformed voting ensemble due to weak learner composition
+- Strong correlations identified between rarity and velocity/distance metrics
 
-1) __Exploratory Data Analysis (EDA):__
-    - Descriptive statistics will be used to gain insights into each variable in the dataset.
-    - Correlation analysis will identify relationships between variables.  
+## Project Structure
 
-2) __Data Preparation:__
-    - Identify and handle missing values through techniques like imputation or deletion (justifying the chosen method).
-    - Address outliers using methods like winsorization if necessary.
-    - Standardize or normalize numerical features to ensure consistent scales and improve model performance.
-    - Based on EDA insights, create new features that might enhance model performance.
-    - Encode categorical features using appropriate techniques like one-hot encoding.
+```
+├── NEO Earth Close Approaches.csv    # Dataset
+├── A_Raju_FinalProject.ipynb        # Analysis notebook
+└── README.md                        # Project documentation
+```
 
-3) __Prepped Data EDA:__    
-    - Perform EDA on the prepped data after handling nulls and outliers.
+## Requirements
 
-4) __Machine Learning Model Construction:__
-    - Employ techniques like recursive feature elimination or feature importance ranking to identify the most informative features 
-    - Use VIF to eliminate columns that shows multi-collinearity.
-    - Apply dimensionality reduction methods, such as principal component analysis (PCA), to reduce the dataset's complexity while retaining essential information.
-    - Build five distinct models to predict asteroid close-approach rarity: 
-        - Logistic regression
-        - Decision tree
-        - KNN
-        - SVM
-        - Neural network 
+- Python 3.x
+- Key Libraries:
+  - pandas
+  - numpy
+  - scikit-learn
+  - tensorflow
+  - matplotlib
+  - seaborn
 
-5) __Model Selection:__
-    - Evaluate the trained models on the unseen dataset using metrics like accuracy, precision, recall, f-1 score
-    - Compare the performance of each model and identify the best performing one based on the chosen metrics.
+## Future Improvements
 
-6) __Ensemble Model:__
-    - Select weak leaners with low performance and create an ensemble model to enhance overall prediction robustness.
-    - Implement and compare ensemble techniques like stacking, voting and bagging.
-    
-This project is feasible within the given time frame as the scope is manageable, focusing on specific variables to address the research questions effectively.
+- Expand dataset with additional hazard-related characteristics
+- Implement more sophisticated feature engineering
+- Explore advanced ensemble techniques
+- Incorporate orbital dynamics parameters
 
+## Contributors
 
-
-# Conclusions
-This project investigated the factors influencing the rarity of asteroid close approaches and explored the effectiveness of machine learning models in predicting and classifying such encounters. We utilized a NASA CNEOS dataset containing information on various NEO characteristics, focusing on close approaches within 10 LD.
-
-__Key Findings:__
-
-- Our exploratory data analysis revealed significant correlations between rarity and factors like velocity, distance, and absolute magnitude.
-- Machine learning models, particularly the KNN classifier, achieved good performance in classifying NEO encounters based on rarity.
-- In our case, the stacking ensemble model performed better than voting ensemble model due to more number of weak learners.
-
-__Addressing Research Questions:__
-
-- __Factors Contributing to Rarity:__ The analysis identified absolute magnitude and diameter as key factors influencing rarity.
-- __Develop multiple ML models:__ Successfully created ML models like logistic regression, KNN, Decision Tree, Neural Network with promising capabilities in predicting rarity based on various NEO characteristics.
-- __Best Performing Model:__ The project successfully developed a best performing Decision Tree classification model with an __accuracy and F-1 score of 0.92__.
-
-## Future Scope
-
-Expanding the dataset to include a broader range of NEO characteristics related to hazard could potentially improve the overall usecase.
+- Surya Suresh Sriraman
+- Nivetha Sivakumar
+- Aravind Raju
