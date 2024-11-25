@@ -71,6 +71,7 @@ Evaluation Metrics: Accuracy, precision, recall, F1-score
 
 ## Contributors
 
+- Aravind Raju
 - Surya Suresh Sriraman
 - Nivetha Sivakumar
-- Aravind Raju
+
